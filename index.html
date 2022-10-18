@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    justify-content: center;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    align-items: center;
+
+-webkit-box-shadow: 4px -4px 15px 0px #FF1F1F, 12px -11px 7px 0px #FF9376, 20px -5px 7px 0px #FFE264, 20px 6px 7px 0px #F6FF33, 13px 12px 17px 0px #FF9527, 2px 17px 17px 0px #FF0000, -9px 21px 18px 0px #FFF212, -9px 6px 11px 0px #FF0808, -11px -9px 11px 0px #FFFA17, -11px -9px 11px 0px #FFFA17, 5px 5px 15px 5px rgba(0,0,0,0); 
+box-shadow: 4px -4px 15px 0px #FF1F1F, 12px -11px 7px 0px #FF9376, 20px -5px 7px 0px #FFE264, 20px 6px 7px 0px #F6FF33, 13px 12px 17px 0px #FF9527, 2px 17px 17px 0px #FF0000, -9px 21px 18px 0px #FFF212, -9px 6px 11px 0px #FF0808, -11px -9px 11px 0px #FFFA17, -11px -9px 11px 0px #FFFA17, 5px 5px 15px 5px rgba(0,0,0,0);
+}
+.container #picture{
+    display: none;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+    <input type="text" id="name"/>
+    <img id="picture" src="" alt="foto de un pokemon"/>
+</div>
+</body>
+
+<script>
+    
+     function setPokemonPicture(){
+        document.getElementById("picture").style.display="unset"
+     let name =  document.getElementById("name").value
+        fetch("https://pokeapi.co/api/v2/pokemon/"+name)
+     .then(response => response.json())
+     .then(pokemon => document.getElementById("picture").src=pokemon.sprites.front_default)
+     }
+     document.getElementById("name").addEventListener("change",setPokemonPicture)
+   
+</script>
+</html>
